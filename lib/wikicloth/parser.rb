@@ -28,22 +28,22 @@ module WikiCloth
       end
 
       def function(&block)
-	self.send :define_method, 'function' do |name, params|
-	  self.instance_exec(name, params, &block)
-	end
+        self.send :define_method, 'function' do |name, params|
+          self.instance_exec(name, params, &block)
+        end
       end
 
       def external_link(&block)
-	self.send :define_method, 'external_link' do |url,text|
-	  self.instance_exec(url,text,&block)
-	end
+        self.send :define_method, 'external_link' do |url,text|
+          self.instance_exec(url,text,&block)
+        end
       end
 
       def include_resource(&block)
-	self.send :define_method, 'include_resource' do |resource,options|
-	  options ||= []
-	  self.instance_exec(resource,options,&block)
-	end
+        self.send :define_method, 'include_resource' do |resource,options|
+          options ||= []
+          self.instance_exec(resource,options,&block)
+        end
       end
 
       def template(&block)
@@ -53,10 +53,10 @@ module WikiCloth
       end
 
       def link_for_resource(&block)
-	self.send :define_method, 'link_for_resource' do |prefix,resource,options|
-	  options ||= []
-	  self.instance_exec(prefix,resource,options,&block)
-	end
+        self.send :define_method, 'link_for_resource' do |prefix,resource,options|
+          options ||= []
+          self.instance_exec(prefix,resource,options,&block)
+        end
       end
 
       def section_link(&block)
@@ -66,15 +66,15 @@ module WikiCloth
       end
 
       def link_for(&block)
-	self.send :define_method, 'link_for' do |page,text|
-	  self.instance_exec(page,text,&block)
-	end
+        self.send :define_method, 'link_for' do |page,text|
+          self.instance_exec(page,text,&block)
+        end
       end
 
       def link_attributes_for(&block)
-	self.send :define_method, 'link_attributes_for' do |page|
-	  self.instance_exec(page,&block)
-	end
+        self.send :define_method, 'link_attributes_for' do |page|
+          self.instance_exec(page,&block)
+        end
       end
 
       def cache(&block)
