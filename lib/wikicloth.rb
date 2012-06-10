@@ -99,6 +99,24 @@ module WikiCloth
       buffer.send("to_#{self.options[:output]}")
     end
 
+    def has_infobox?
+      !!@sections[0].to_s.match(/\{\{Infobox.*\n\}\}/m)
+    end
+
+    def infobox
+      raw_info = @sections[0].to_s.match(/\{\{Infobox.*\n\}\}/m).to_s.split("\n")
+      raw_info.shift
+      raw_info.pop
+      infobox = {}
+      raw_info.each do |line|
+        info = line.split(" = ")
+        key = info[0]
+        key.slice!(0)
+        infobox[key.to_sym] = Parser.new(:data => info[1])
+      end
+      infobox
+    end
+
     def sections
       @sections ||= [Section.new]
     end

@@ -84,6 +84,14 @@ module WikiCloth
       end
     end
 
+    def has_infobox?
+      @wikicloth.has_infobox?
+    end
+
+    def infobox
+      @wikicloth.infobox
+    end
+
     def method_missing(method, *args)
       if @wikicloth.respond_to?(method)
         @wikicloth.send(method, *args)
